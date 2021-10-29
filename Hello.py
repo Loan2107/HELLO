@@ -29,5 +29,3 @@ while True:
 for i in range(0,n+1):  
     addsv(a)
 
-for i in a:
-    print(i["ID"])
