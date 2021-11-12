@@ -1,8 +1,8 @@
-﻿CREATE DATABASE QLBH_2020
+﻿CREATE DATABASE QLBH2
 GO
 -----------------------------------------------------
 -----------------------------------------------------
-USE QLBH_2020
+USE QLBH2
 GO
 ---------------------------------------------
 -- KHACHANG
@@ -259,8 +259,8 @@ WHERE KHACHHANG.MAKH = HOADON.MAKH AND HOADON.NGHD = '1/1/2007';
 
 --9. In ra số hóa đơn, trị giá các hóa đơn do nhân viên có tên “Nguyen Van B” lập trong ngày 28/10/2006.
 SELECT HOADON.SOHD, HOADON.TRIGIA
-FROM HOADON, NHANVIEN
-where HOADON.MANV = NHANVIEN.MANV and NHANVIEN.HOTEN = 'Nguyen Van B' and HOADON.NGHD = '28/10/2006'
+FROM HOADON join NHANVIEN on HOADON.MANV = NHANVIEN.MANV
+where NHANVIEN.HOTEN = 'Nguyen Van B' and HOADON.NGHD = '10/28/2006'
 
 --10. In ra danh sách các sản phẩm (MASP,TENSP) được khách hàng có tên “Nguyen Van A”mua trong tháng 10/2006.
 SELECT DISTINCT SANPHAM.MASP, SANPHAM.TENSP FROM SANPHAM, HOADON, KHACHHANG
@@ -428,6 +428,10 @@ WHERE NUOCSX='Trung Quoc' AND MASP IN (SELECT TOP 3 MASP
 										ORDER BY GIA DESC)
 
 --31. * In ra danh sách khách hàng nằm trong 3 hạng cao nhất (xếp hạng theo doanh số).
+SELECT TOP 3 MAKH, HOTEN
+FROM KHACHHANG
+ORDER BY DOANHSO DESC
+
 --32. Tính tổng số sản phẩm do “Trung Quoc” sản xuất.
 SELECT COUNT(MASP) as Tong
 FROM SANPHAM
@@ -461,12 +465,20 @@ WHERE YEAR(HOADON.NGHD)= 2006
 group by MONTH(HOADON.NGHD)
 
 --38. Tìm hóa đơn có mua ít nhất 4 sản phẩm khác nhau.
+SELECT CTHD.MASP
+FROM CTHD
+GROUP BY MASP
 
 
 --39. Tìm hóa đơn có mua 3 sản phẩm do “Viet Nam” sản xuất (3 sản phẩm khác nhau).
 
 
 --40. Tìm khách hàng (MAKH, HOTEN) có số lần mua hàng nhiều nhất. 
+SELECT TOP 10 HOADON.MAKH,COUNT(HOADON.MAKH) AS SOLAN
+FROM HOADON join KHACHHANG on HOADON.MAKH = KHACHHANG.MAKH
+GROUP BY HOADON.MAKH
+ORDER BY SOLAN DESC
+
 --41. Tháng mấy trong năm 2006, doanh số bán hàng cao nhất ?
 select TOP 1 Month(HOADON.NGHD) as THANG2006,sum(HOADON.TRIGIA) as DOANHTHU
 from HOADON
@@ -475,6 +487,13 @@ group by MONTH(HOADON.NGHD)
 ORDER BY SUM(TRIGIA) DESC
 
 --42. Tìm sản phẩm (MASP, TENSP) có tổng số lượng bán ra thấp nhất trong năm 2006.
+SELECT TOP 1 SANPHAM.MASP, SANPHAM.TENSP, SUM(SL) as TONG
+FROM SANPHAM JOIN CTHD ON SANPHAM.MASP = CTHD.MASP
+			JOIN HOADON ON CTHD.SOHD = HOADON.SOHD
+WHERE YEAR(NGHD) = 2006
+GROUP BY SANPHAM.MASP, SANPHAM.TENSP
+ORDER BY SUM(SL) ASC
+
 --43. *Mỗi nước sản xuất, tìm sản phẩm (MASP,TENSP) có giá bán cao nhất.
 --44. Tìm nước sản xuất sản xuất ít nhất 3 sản phẩm có giá bán khác nhau.
 --45. *Trong 10 khách hàng có doanh số cao nhất, tìm khách hàng có số lần mua hàng nhiều nhất
