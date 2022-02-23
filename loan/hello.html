@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+    <head>
+        <title>Hello</title>
+        <meta charset="utf-8">
+        <style>
+            .nav{
+                width: 100%;
+                height: 110px;
+                background-color:black;
+                display: flex;
+                position: fixed;
+                top: 0;
+            }
+            .nav-list{
+                display: flex;
+                margin: 80px 0 100px; 
+            }
+            .nav-item{
+                color: white;
+                list-style: none;
+                margin: 0 50px;
+            }
+            .box{
+                width: 100%;
+                height: 70px;
+                background-color:brown;
+                position:absolute;
+            }
+            .column-layout {
+                margin-top: 100px;
+                background-color: #fff;
+                display: flex;
+                justify-content: space-around;
+                padding-right: 10px;
+            }
+            .sidebar-one {
+                flex: 1;
+            }
+
+            .sidebar-two {
+                flex: 1;
+            }
+
+            .main-column {
+                flex: 3;
+            }
+
+            .feature-layout{
+                display: flex;
+                justify-content: space-around;
+                background-color: darksalmon;
+                flex-direction: column;
+            }
+            @media(min-width: 740px){
+                .feature-layout{
+                    flex-direction: row;
+                }
+            }
+            .feature-item {
+                padding: 12px 16px;
+                margin-top: 16px;
+                flex-basis: 28%;
+                margin-bottom: 20px;
+            }
+
+            .feature-item:nth-child(1) {
+                background-color: rgb(192, 227, 222);
+            }
+
+            .feature-item:nth-child(2) {
+                background-color: rgb(227, 200, 192);
+            }
+
+            .feature-item:nth-child(3) {
+                background-color: rgb(226, 192, 227);
+            }
+
+            .end{
+                margin-top: 10px;
+                background-color: coral;
+                display: flex;
+            }
+            .end1{
+                padding:10px;
+                margin: 50px 0 50px 50px;
+                background-color: cornflowerblue;
+                flex: 1;
+            }
+            .end2{
+                display: flex;
+                margin: 50px 50px 50px 0;
+                flex-direction: column-reverse;
+                flex: 1;
+            }
+            .kt1{
+                padding: 10px;
+                background-color: blanchedalmond;
+            }
+            .kt2{
+                padding:10px;
+                background-color: darksalmon;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="nav">
+            <div class="box">
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item">Giới thiệu</li>
+                <li class="nav-item">Kết nối</li>
+                <li class="nav-item">Tải ứng dụng</li>
+            </ul>
+            <ul class="nav-list">
+                <li class="nav-item">Đăng ký</li>
+                <li class="nav-item">Đăng nhập</li>
+            </ul>
+        </div>
+
+        <div class="column-layout">
+            <div class="column-item sidebar-one">
+                <h2>Sidebar one</h2>
+                <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time, I would like to apply today as a Sample position in permanent employment.</p>
+            </div>
+            <div class="column-item main-column">
+                <h2>Main column</h2>
+                <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time, I would like to apply today as a Sample position in permanent employment.</p>
+                <p>At the moment I'm working as a Sample position at Sample company.My most important tasks include familiarizing myself with new products, conducting sales talks and transferring orders.</p>
+                <p>Your job list sounds great! I hope that this will enable me to develop personal and professional development opportunities.I like your focus and image in this industry very well, so I see you as a very interesting employer.I have been following your development for a long time in the media and therefore believe that I also fit in well with the company.</p>
+            </div>
+            <div class="column-item sidebar-two">
+                <h2>Sidebar two</h2>
+                <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time, I would like to apply today as a Sample position in permanent employment.</p>
+            </div>
+        </div>
+
+
+        <div class="feature-layout">
+            <div class="feature-item">
+                <h2>Feature 1</h2>
+                <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time, I would like to apply today as a Sample position in permanent employment.</p>
+            </div>
+            <div class="feature-item">
+                <h2>Feature 2</h2>
+                <p>At the moment I'm working as a Sample position at Sample company.My most important tasks include familiarizing myself with new products, conducting sales talks and transferring orders.</p>
+            </div>
+            <div class="feature-item">
+                <h2>Feature 3</h2>
+                <p>Your job list sounds great! I hope that this will enable me to develop personal and professional development opportunities.I like your focus and image in this industry very well, so I see you as a very interesting employer.I have been following your development for a long time in the media and therefore believe that I also fit in well with the company.</p>
+            </div>
+        </div>
+
+        <div class="end">
+            <div class ="end1">
+                <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time, I would like to apply today as a Sample position in permanent employment.</p>
+            </div>
+
+            <div class="end2">
+                <div class="kt1">
+                    <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time.</p>
+                </div>
+                <div class="kt2">
+                    <p>I'm writing to you in reference to the job position advertised MyCV.vn which immediately appealed to me.Since I've been interested in your company for a long time.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</head>
